@@ -1,10 +1,8 @@
 /*
 * Hacer las funciones de validación de validarCiudad y validarDescripcionRegalo.
 * Escribir pruebas para esas funciones.
-*
+* Borrar los mensajes de error cada vez que se envía la carta
 
-
-* Adicional: Escribir pruebas para las funciones de tareas anteriores.
 *
 * */
 
@@ -23,7 +21,12 @@ const errores = {
     ['descripcion-regalo']: errorDescripcionRegalo
 }
 
-manejarErrores(errores);
+const esExito = manejarErrores(errores) === 0;
+
+if(esExito){
+    $form.className = "oculto";
+    document.querySelector('#exito').className = "";
+}
 
 
 event.preventDefault()
@@ -35,16 +38,27 @@ function manejarErrores(errores){
     errorDescripcionRegalo = errores.descripcionRegalo;
 
     const keys = Object.keys(errores);
+    const $errores = document.querySelector('#errores'); 
+    let cantidadErrores = 0;
+
+    $errores.innerHTML = "";
 
     keys.forEach(function(key){
-        const error = errores(key);
+        const error = errores[key];
 
         if(error){
             $form[key].className = "error";
+            cantidadErrores++;
+
+            const $error = document.createElement('li');
+            $error.textContent = error;
+            $errores.appendChild($error);
         }else{
             $form[key].className = "";
         }
     })
+
+    return cantidadErrores;
 }
 function validarNombre(nombre){
     if(nombre.length < 1){
