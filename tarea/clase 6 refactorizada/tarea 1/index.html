@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="main.css" />
+    <title>Tarea Grupo Familiar</title>
+  </head>
+  <body>
+    <form id="formulario">
+      <label for="cantidad-de-integrantes">Cantidad de Integrantes: </label>
+      <input type="number" id="cantidad-de-integrantes" />
+      <button type="button" id="crear-integrantes">Crear Integrantes</button>
+
+      <button type="reset" id="resetear">Empezar de nuevo</button>
+      <hr />
+
+      <div id="integrantes" class="oculto"></div>
+      <hr />
+      <button type="button" id="calcular" class="oculto">Calcular</button>
+
+      <ul id="errores"></ul>
+
+      <div id="resultados" class="oculto">
+        <p id="edad-mayor"><strong>Mayor edad: </strong></p>
+        <p id="edad-menor"><strong>Menor edad: </strong></p>
+        <p id="edad-promedio"><strong>Promedio de edades: </strong></p>
+      </div>
+    </form>
+
+    <script src="tarea-clase-6.js"></script>
+    <script src="tarea-clase-6-pruebas.js"></script>
+  </body>
+</html>
